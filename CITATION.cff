@@ -1,0 +1,23 @@
+cff-version: 1.2.1
+message: "Please cite the MolAlign3D paper and the MolFLAE paper when using the baseline."
+type: software
+title: "MolAlign3D: ZINC research code with the MolFLAE baseline"
+version: 1.3.0
+date-released: 2026-10-25
+repository-code: "https://github.com/MuZhao2333/MolAlign3D"
+url: "https://github.com/MuZhao2333/MolAlign3D"
+authors:
+  - family-names: Chen
+    given-names: Zitao
+preferred-citation:
+  type: conference-paper
+  title: "MolAlign3D: Enhancing Fixed-Dimensional E(3)-Equivariant Latent Space for High-Fidelity 3D Molecular Reconstruction and Editing"
+  authors:
+    - {family-names: Chen, given-names: Zitao}
+    - {family-names: Ji, given-names: Jiatong}
+    - {family-names: Jia, given-names: Yinjun}
+    - {family-names: Ma, given-names: Wei-Ying}
+    - {family-names: Lan, given-names: Yanyan}
+  year: 2026
+  collection-title: International Conference on Machine Learning
+  url: https://icml.cc/virtual/2026/poster/66574

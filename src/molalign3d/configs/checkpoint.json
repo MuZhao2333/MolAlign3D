@@ -1,0 +1,23 @@
+{
+  "original_checkpoint": "ckpt-zinc-split-Unimol/model-epoch=14-val_loss=4.19-step=0136514.ckpt",
+  "architecture": {
+    "global_nodes": 8,
+    "structural_dim": 16,
+    "decoder_dim": 80
+  },
+  "files": {
+    "model.ckpt": {
+      "sha256": "cefa6447db5a2db7df8b5b30f398b7316991a594b570f69941c07fc01c169a3b",
+      "bytes": 259054983
+    },
+    "mol_pre_no_h_220816.pt": {
+      "sha256": "da27196af09a8c6d089e10b7764b6a716bcc33da227fc118f5b45b0e484585e9",
+      "bytes": 190540187
+    },
+    "mol.dict.txt": {
+      "sha256": "94135cb9a9198f988de684cb61e2c372882a3bd59b8320effbae704c38057127",
+      "bytes": 91
+    }
+  },
+  "selection": "original latent editing experiment checkpoint, not a newly selected best checkpoint"
+}

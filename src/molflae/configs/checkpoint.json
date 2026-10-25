@@ -1,0 +1,15 @@
+{
+  "original_checkpoint": "v1/model-epoch=24-val_loss=3.40.ckpt",
+  "architecture": {
+    "global_nodes": 10,
+    "structural_dim": 32,
+    "decoder_dim": 32
+  },
+  "files": {
+    "model.ckpt": {
+      "sha256": "6eb8332e9f2c955fe93197fca54213c2d561e5078067a6c3102f11ce7b9a7f3f",
+      "bytes": 66892474
+    }
+  },
+  "selection": "original latent editing experiment checkpoint, not a newly selected best checkpoint"
+}

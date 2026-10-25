@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "molalign3d-research"
+version = "1.3.0"
+description = "ZINC research code for MolAlign3D with the MolFLAE baseline"
+readme = "README.md"
+license = {file = "LICENSE"}
+requires-python = ">=3.11,<3.13"
+authors = [{name = "Zitao Chen"}]
+dependencies = ["torch>=2.6,<2.9", "numpy>=1.26,<2", "scipy>=1.13", "torch-geometric>=2.6,<2.7", "torch-scatter>=2.1,<2.2", "torch-cluster>=1.6,<1.7", "pytorch-lightning>=2.5,<2.6", "rdkit>=2024", "openbabel-wheel>=3.1", "PyYAML>=6", "wandb>=0.19,<0.23", "protobuf>=5,<6", "torchdiffeq>=0.2", "absl-py", "fire", "tqdm", "networkx", "matplotlib", "addict", "scikit-learn", "pandas", "lmdb", "numba", "huggingface-hub>=0.25,<1"]
+
+[project.urls]
+Repository = "https://github.com/MuZhao2333/MolAlign3D"
+Issues = "https://github.com/MuZhao2333/MolAlign3D/issues"
+Releases = "https://github.com/MuZhao2333/MolAlign3D/releases"
+
+[project.scripts]
+molalign3d-research = "common.cli:main"
+molalign3d = "molalign3d.cli:main"
+molflae = "molflae.cli:main"
+
+[tool.setuptools]
+license-files = ["LICENSE", "THIRD_PARTY_NOTICES.md", "src/molalign3d/vendor/unimol/LICENSE"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+common = ["configs/*.json"]
+molalign3d = ["configs/*.yaml", "configs/*.json", "vendor/**/*.txt", "vendor/**/*.json", "vendor/**/*.yaml", "vendor/**/LICENSE"]
+molflae = ["configs/*.yaml", "configs/*.json"]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 140
+extend-exclude = [ "src/molalign3d/vendor", "src/molalign3d/models", "src/molflae/models", "src/molalign3d/backbones"]
+
+[tool.ruff.lint]
+select = ["F821", "F823"]

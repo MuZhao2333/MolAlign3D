@@ -1,0 +1,144 @@
+encoder_config:
+  name: unio2net
+  num_blocks: 1
+  num_layers: 9
+  hidden_dim: 128
+  n_heads: 16
+  knn: 32
+  num_r_gaussian: 20
+  edge_feat_dim: 4
+  num_node_types: 8
+  act_fn: relu
+  norm: true
+  cutoff_mode: global
+  ew_net_type: r
+  num_init_x2h: 1
+  num_init_h2x: 1
+  num_x2h: 1
+  num_h2x: 1
+  r_max: 10.0
+  x2h_out_fc: false
+  sync_twoup: false
+  global_node_num: 8
+  ligand_v_dim: 9
+  fix_real_x: true
+optimal_layer_config:
+  latent_dim: 16
+atom_num_predictor:
+  hidden_dim: 256
+decoder_config:
+  beta1: 1.5
+  center_pos_mode: true
+  destination_prediction: true
+  discrete_steps: 1000
+  ligand_atom_feature_dim: 9
+  net_config:
+    act_fn: relu
+    cutoff_mode: ~global
+    edge_feat_dim: 4
+    ew_net_type: global
+    hidden_dim: 128
+    knn: 32
+    n_heads: 16
+    name: unio2net
+    norm: true
+    num_blocks: 1
+    num_h2x: 1
+    num_layers: 9
+    num_node_types: 8
+    num_r_gaussian: 20
+    num_x2h: 1
+    r_max: 10.0
+    sync_twoup: false
+    x2h_out_fc: false
+  node_indicator: true
+  pos_init_mode: zero
+  protein_atom_feature_dim: 80
+  sampling_strategy: end_back_pmf
+  sigma1_coord: 0.03
+  t_min: 0.0001
+  time_emb_dim: 1
+  time_emb_mode: simple
+  use_discrete_t: true
+train:
+  max_epochs: 15
+  batch_size: 64
+  num_workers: 0
+  gpus:
+  - 0
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  recon_loss:
+    recon_loss_weight: 1
+    d_loss_weight: 1
+    c_loss_weight: 1
+  kl_loss:
+    kl_loss_weight: 0.1
+    Zh_kl_loss_weight: 0.05
+    Zx_kl_loss_weight: 0.5
+    sigma2: 10.0
+    kl_anneal:
+      enabled: true
+      start: 0.0
+      end: 1.0
+      total_steps: 10000
+    free_bits: 0.0
+  contrastive_loss:
+    type: infonce
+    contrastive_loss_weight: 0.1
+    lambda_constrastive_h: 1.0
+    lambda_constrastive_x: 1.0
+  atom_num_loss:
+    atom_num_loss_weight: 0.0
+  optimizer:
+    beta1: 0.95
+    beta2: 0.999
+    lr: 0.0005
+    type: adam
+    weight_decay: 0
+  scheduler:
+    factor: 0.6
+    max_iters: 20000
+    min_lr: 1.0e-06
+    patience: 10
+    type: plateau
+  ckpt_path: outputs/checkpoints
+  ckpt_freq: 1
+  ema_decay: 0.999
+  max_grad_norm: Q
+  val_freq: 0.25
+  mask_token_prob: 0.0
+  mask_pos_prob: 0.0
+  noise: 1.0
+  noise_type: uniform
+  masked_token_loss_weight: 0.0
+  masked_coord_loss_weight: 0.0
+  zh_noise:
+    enabled: true
+    tau: 0.1
+  debug: false
+  accumulate_grad_batches: 2
+data:
+  path: data/ZINC_9M_10confs.lmdb
+  indices_path: data/original-splits
+  require_H: false
+evaluation:
+  batch_size: 50
+  num_samples: 4
+  sample_steps: 100
+  sample_num_atoms: ref
+  num_workers: 0
+  save_dir: outputs/validation
+unimol:
+  enabled: true
+  model: unimol
+  ckpt_path: UNIMOL_CKPT/mol_pre_no_h_220816.pt
+  freeze: true
+  project_to_latent: false
+  use_outnorm: true
+  outnorm_method: scalar

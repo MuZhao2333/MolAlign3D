@@ -1,0 +1,1605 @@
+{
+  "schema_version": 1,
+  "dataset_scope": "ZINC only",
+  "default_profile": "checkpoint",
+  "policy": "Checkpoint profile preserves original source hyperparameters, except epoch budgets aligned to the selected checkpoint and paper. Original and conflicting paper values remain explicit presets. Custom changes must be recorded as overrides.",
+  "paper_versions": {
+    "molalign3d": {
+      "local_filename": "9430_MolAlign3D_Enhancing_Fixe.pdf",
+      "table": "Table 7, PDF p19",
+      "sha256": "268c21080ba18f88e4d90b95222db959f097cfcea15b5f7da42603c718d27369"
+    },
+    "molflae": {
+      "arxiv": "2506.00771v2",
+      "tables": "Table 9 and 10, PDF p22",
+      "sha256": "ddefa81f56440a9eedbb59163ec59d136084629718a3a52054164f04345c26f7"
+    }
+  },
+  "derived_values": {
+    "molalign3d": {
+      "structural_regularizer_weight": 0.005,
+      "coordinate_kl_weight": 0.05,
+      "unimol_channels_per_node": 64,
+      "coordinate_prior_variance": 100
+    },
+    "molflae": {
+      "coordinate_prior_variance": 100,
+      "feature_prior_variance": 1
+    }
+  },
+  "models": {
+    "molalign3d": {
+      "source_commit": "a47090b56f7f8db07b6d002640891807f8c96512",
+      "source_config": "config.yaml",
+      "original_config_sha256": "3f2fe53198222b85e44fc3e652b10e0b287ba3c7404f0f46fdfb26ef15366dbc",
+      "checkpoint_evidence": {
+        "epoch": 14,
+        "global_step": 136514,
+        "optimizer_groups": [
+          {
+            "lr": 0.0005,
+            "betas": [
+              0.95,
+              0.999
+            ],
+            "eps": 1e-08,
+            "weight_decay": 0,
+            "amsgrad": false,
+            "maximize": false,
+            "foreach": null,
+            "capturable": false,
+            "differentiable": false,
+            "fused": null
+          }
+        ],
+        "scheduler": [
+          {
+            "factor": 0.6,
+            "min_lrs": [
+              1e-06
+            ],
+            "patience": 10.0,
+            "last_epoch": 14,
+            "_last_lr": [
+              0.0005
+            ]
+          }
+        ]
+      },
+      "profiles": {
+        "checkpoint": {},
+        "original": {
+          "train.max_epochs": 400
+        },
+        "paper": {}
+      },
+      "fields": [
+        {
+          "field": "encoder_config.name",
+          "original_defined": true,
+          "original_value": "unio2net",
+          "released_value": "unio2net"
+        },
+        {
+          "field": "encoder_config.num_blocks",
+          "original_defined": true,
+          "original_value": 1,
+          "released_value": 1
+        },
+        {
+          "field": "encoder_config.num_layers",
+          "original_defined": true,
+          "original_value": 9,
+          "released_value": 9,
+          "paper_value": 9,
+          "paper_source": "Table 7, PDF p19"
+        },
+        {
+          "field": "encoder_config.hidden_dim",
+          "original_defined": true,
+          "original_value": 128,
+          "released_value": 128,
+          "paper_value": 128,
+          "paper_source": "Table 7, PDF p19"
+        },
+        {
+          "field": "encoder_config.n_heads",
+          "original_defined": true,
+          "original_value": 16,
+          "released_value": 16,
+          "paper_value": 16,
+          "paper_source": "Table 7, PDF p19"
+        },
+        {
+          "field": "encoder_config.knn",
+          "original_defined": true,
+          "original_value": 32,
+          "released_value": 32,
+          "paper_value": 32,
+          "paper_source": "Table 7, PDF p19"
+        },
+        {
+          "field": "encoder_config.num_r_gaussian",
+          "original_defined": true,
+          "original_value": 20,
+          "released_value": 20
+        },
+        {
+          "field": "encoder_config.edge_feat_dim",
+          "original_defined": true,
+          "original_value": 4,
+          "released_value": 4
+        },
+        {
+          "field": "encoder_config.num_node_types",
+          "original_defined": true,
+          "original_value": 8,
+          "released_value": 8
+        },
+        {
+          "field": "encoder_config.act_fn",
+          "original_defined": true,
+          "original_value": "relu",
+          "released_value": "relu",
+          "paper_value": "relu",
+          "paper_source": "Table 7, PDF p19"
+        },
+        {
+          "field": "encoder_config.norm",
+          "original_defined": true,
+          "original_value": true,
+          "released_value": true
+        },
+        {
+          "field": "encoder_config.cutoff_mode",
+          "original_defined": true,
+          "original_value": "global",
+          "released_value": "global"
+        },
+        {
+          "field": "encoder_config.ew_net_type",
+          "original_defined": true,
+          "original_value": "r",
+          "released_value": "r"
+        },
+        {
+          "field": "encoder_config.num_init_x2h",
+          "original_defined": true,
+          "original_value": 1,
+          "released_value": 1
+        },
+        {
+          "field": "encoder_config.num_init_h2x",
+          "original_defined": true,
+          "original_value": 1,
+          "released_value": 1
+        },
+        {
+          "field": "encoder_config.num_x2h",
+          "original_defined": true,
+          "original_value": 1,
+          "released_value": 1
+        },
+        {
+          "field": "encoder_config.num_h2x",
+          "original_defined": true,
+          "original_value": 1,
+          "released_value": 1
+        },
+        {
+          "field": "encoder_config.r_max",
+          "original_defined": true,
+          "original_value": 10.0,
+          "released_value": 10.0
+        },
+        {
+          "field": "encoder_config.x2h_out_fc",
+          "original_defined": true,
+          "original_value": false,
+          "released_value": false
+        },
+        {
+          "field": "encoder_config.sync_twoup",
+          "original_defined": true,
+          "original_value": false,
+          "released_value": false
+        },
+        {
+          "field": "encoder_config.global_node_num",
+          "original_defined": true,
+          "original_value": 8,
+          "released_value": 8,
+          "paper_value": 8,
+          "paper_source": "Table 7, PDF p19"
+        },
+        {
+          "field": "encoder_config.ligand_v_dim",
+          "original_defined": true,
+          "original_value": 9,
+          "released_value": 9
+        },
+        {
+          "field": "encoder_config.fix_real_x",
+          "original_defined": true,
+          "original_value": true,
+          "released_value": true
+        },
+        {
+          "field": "optimal_layer_config.latent_dim",
+          "original_defined": true,
+          "original_value": 16,
+          "released_value": 16,
+          "paper_value": 16,
+          "paper_source": "Table 7, PDF p19"
+        },
+        {
+          "field": "atom_num_predictor.hidden_dim",
+          "original_defined": true,
+          "original_value": 256,
+          "released_value": 256
+        },
+        {
+          "field": "decoder_config.beta1",
+          "original_defined": true,
+          "original_value": 1.5,
+          "released_value": 1.5,
+          "paper_value": 1.5,
+          "paper_source": "Table 7, PDF p19"
+        },
+        {
+          "field": "decoder_config.center_pos_mode",
+          "original_defined": true,
+          "original_value": true,
+          "released_value": true
+        },
+        {
+          "field": "decoder_config.destination_prediction",
+          "original_defined": true,
+          "original_value": true,
+          "released_value": true
+        },
+        {
+          "field": "decoder_config.discrete_steps",
+          "original_defined": true,
+          "original_value": 1000,
+          "released_value": 1000
+        },
+        {
+          "field": "decoder_config.ligand_atom_feature_dim",
+          "original_defined": true,
+          "original_value": 9,
+          "released_value": 9
+        },
+        {
+          "field": "decoder_config.net_config.act_fn",
+          "original_defined": true,
+          "original_value": "relu",
+          "released_value": "relu"
+        },
+        {
+          "field": "decoder_config.net_config.cutoff_mode",
+          "original_defined": true,
+          "original_value": "~global",
+          "released_value": "~global"
+        },
+        {
+          "field": "decoder_config.net_config.edge_feat_dim",
+          "original_defined": true,
+          "original_value": 4,
+          "released_value": 4
+        },
+        {
+          "field": "decoder_config.net_config.ew_net_type",
+          "original_defined": true,
+          "original_value": "global",
+          "released_value": "global"
+        },
+        {
+          "field": "decoder_config.net_config.hidden_dim",
+          "original_defined": true,
+          "original_value": 128,
+          "released_value": 128
+        },
+        {
+          "field": "decoder_config.net_config.knn",
+          "original_defined": true,
+          "original_value": 32,
+          "released_value": 32
+        },
+        {
+          "field": "decoder_config.net_config.n_heads",
+          "original_defined": true,
+          "original_value": 16,
+          "released_value": 16
+        },
+        {
+          "field": "decoder_config.net_config.name",
+          "original_defined": true,
+          "original_value": "unio2net",
+          "released_value": "unio2net"
+        },
+        {
+          "field": "decoder_config.net_config.norm",
+          "original_defined": true,
+          "original_value": true,
+          "released_value": true
+        },
+        {
+          "field": "decoder_config.net_config.num_blocks",
+          "original_defined": true,
+          "original_value": 1,
+          "released_value": 1
+        },
+        {
+          "field": "decoder_config.net_config.num_h2x",
+          "original_defined": true,
+          "original_value": 1,
+          "released_value": 1
+        },
+        {
+          "field": "decoder_config.net_config.num_layers",
+          "original_defined": true,
+          "original_value": 9,
+          "released_value": 9
+        },
+        {
+          "field": "decoder_config.net_config.num_node_types",
+          "original_defined": true,
+          "original_value": 8,
+          "released_value": 8
+        },
+        {
+          "field": "decoder_config.net_config.num_r_gaussian",
+          "original_defined": true,
+          "original_value": 20,
+          "released_value": 20
+        },
+        {
+          "field": "decoder_config.net_config.num_x2h",
+          "original_defined": true,
+          "original_value": 1,
+          "released_value": 1
+        },
+        {
+          "field": "decoder_config.net_config.r_max",
+          "original_defined": true,
+          "original_value": 10.0,
+          "released_value": 10.0
+        },
+        {
+          "field": "decoder_config.net_config.sync_twoup",
+          "original_defined": true,
+          "original_value": false,
+          "released_value": false
+        },
+        {
+          "field": "decoder_config.net_config.x2h_out_fc",
+          "original_defined": true,
+          "original_value": false,
+          "released_value": false
+        },
+        {
+          "field": "decoder_config.node_indicator",
+          "original_defined": true,
+          "original_value": true,
+          "released_value": true
+        },
+        {
+          "field": "decoder_config.pos_init_mode",
+          "original_defined": true,
+          "original_value": "zero",
+          "released_value": "zero"
+        },
+        {
+          "field": "decoder_config.protein_atom_feature_dim",
+          "original_defined": true,
+          "original_value": 80,
+          "released_value": 80,
+          "paper_value": 80,
+          "paper_source": "Table 7, PDF p19"
+        },
+        {
+          "field": "decoder_config.sampling_strategy",
+          "original_defined": true,
+          "original_value": "end_back_pmf",
+          "released_value": "end_back_pmf"
+        },
+        {
+          "field": "decoder_config.sigma1_coord",
+          "original_defined": true,
+          "original_value": 0.03,
+          "released_value": 0.03,
+          "paper_value": 0.03,
+          "paper_source": "Table 7, PDF p19"
+        },
+        {
+          "field": "decoder_config.t_min",
+          "original_defined": true,
+          "original_value": 0.0001,
+          "released_value": 0.0001,
+          "paper_value": 0.0001,
+          "paper_source": "Table 7, PDF p19"
+        },
+        {
+          "field": "decoder_config.time_emb_dim",
+          "original_defined": true,
+          "original_value": 1,
+          "released_value": 1
+        },
+        {
+          "field": "decoder_config.time_emb_mode",
+          "original_defined": true,
+          "original_value": "simple",
+          "released_value": "simple"
+        },
+        {
+          "field": "decoder_config.use_discrete_t",
+          "original_defined": true,
+          "original_value": true,
+          "released_value": true
+        },
+        {
+          "field": "train.max_epochs",
+          "original_defined": true,
+          "original_value": 400,
+          "released_value": 15,
+          "paper_value": 15,
+          "paper_source": "Table 7, PDF p19",
+          "decision": "Paper epoch budget matches zero-based released checkpoint epoch + 1; original launcher upper limit is preserved by the original preset."
+        },
+        {
+          "field": "train.batch_size",
+          "original_defined": true,
+          "original_value": 64,
+          "released_value": 64,
+          "paper_value": 64,
+          "paper_source": "Table 7, PDF p19"
+        },
+        {
+          "field": "train.num_workers",
+          "original_defined": true,
+          "original_value": 0,
+          "released_value": 0
+        },
+        {
+          "field": "train.gpus",
+          "original_defined": true,
+          "original_value": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "released_value": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        },
+        {
+          "field": "train.recon_loss.recon_loss_weight",
+          "original_defined": true,
+          "original_value": 1,
+          "released_value": 1,
+          "paper_value": 1,
+          "paper_source": "Table 7, PDF p19"
+        },
+        {
+          "field": "train.recon_loss.d_loss_weight",
+          "original_defined": true,
+          "original_value": 1,
+          "released_value": 1
+        },
+        {
+          "field": "train.recon_loss.c_loss_weight",
+          "original_defined": true,
+          "original_value": 1,
+          "released_value": 1
+        },
+        {
+          "field": "train.kl_loss.kl_loss_weight",
+          "original_defined": true,
+          "original_value": 0.1,
+          "released_value": 0.1
+        },
+        {
+          "field": "train.kl_loss.Zh_kl_loss_weight",
+          "original_defined": true,
+          "original_value": 0.05,
+          "released_value": 0.05
+        },
+        {
+          "field": "train.kl_loss.Zx_kl_loss_weight",
+          "original_defined": true,
+          "original_value": 0.5,
+          "released_value": 0.5
+        },
+        {
+          "field": "train.kl_loss.sigma2",
+          "original_defined": true,
+          "original_value": 10.0,
+          "released_value": 10.0,
+          "paper_value": 10.0,
+          "paper_source": "Table 7, PDF p19"
+        },
+        {
+          "field": "train.kl_loss.kl_anneal.enabled",
+          "original_defined": true,
+          "original_value": true,
+          "released_value": true
+        },
+        {
+          "field": "train.kl_loss.kl_anneal.start",
+          "original_defined": true,
+          "original_value": 0.0,
+          "released_value": 0.0
+        },
+        {
+          "field": "train.kl_loss.kl_anneal.end",
+          "original_defined": true,
+          "original_value": 1.0,
+          "released_value": 1.0
+        },
+        {
+          "field": "train.kl_loss.kl_anneal.total_steps",
+          "original_defined": true,
+          "original_value": 10000,
+          "released_value": 10000,
+          "paper_value": 10000,
+          "paper_source": "Table 7, PDF p19"
+        },
+        {
+          "field": "train.kl_loss.free_bits",
+          "original_defined": true,
+          "original_value": 0.0,
+          "released_value": 0.0
+        },
+        {
+          "field": "train.contrastive_loss.type",
+          "original_defined": true,
+          "original_value": "infonce",
+          "released_value": "infonce"
+        },
+        {
+          "field": "train.contrastive_loss.contrastive_loss_weight",
+          "original_defined": true,
+          "original_value": 0.1,
+          "released_value": 0.1,
+          "paper_value": 0.1,
+          "paper_source": "Table 7, PDF p19"
+        },
+        {
+          "field": "train.contrastive_loss.lambda_constrastive_h",
+          "original_defined": true,
+          "original_value": 1.0,
+          "released_value": 1.0
+        },
+        {
+          "field": "train.contrastive_loss.lambda_constrastive_x",
+          "original_defined": true,
+          "original_value": 1.0,
+          "released_value": 1.0
+        },
+        {
+          "field": "train.atom_num_loss.atom_num_loss_weight",
+          "original_defined": true,
+          "original_value": 0.0,
+          "released_value": 0.0
+        },
+        {
+          "field": "train.optimizer.beta1",
+          "original_defined": true,
+          "original_value": 0.95,
+          "released_value": 0.95,
+          "paper_value": 0.95,
+          "paper_source": "Table 7, PDF p19"
+        },
+        {
+          "field": "train.optimizer.beta2",
+          "original_defined": true,
+          "original_value": 0.999,
+          "released_value": 0.999,
+          "paper_value": 0.999,
+          "paper_source": "Table 7, PDF p19"
+        },
+        {
+          "field": "train.optimizer.lr",
+          "original_defined": true,
+          "original_value": 0.0005,
+          "released_value": 0.0005,
+          "paper_value": 0.0005,
+          "paper_source": "Table 7, PDF p19"
+        },
+        {
+          "field": "train.optimizer.type",
+          "original_defined": true,
+          "original_value": "adam",
+          "released_value": "adam",
+          "paper_value": "adam",
+          "paper_source": "Table 7, PDF p19"
+        },
+        {
+          "field": "train.optimizer.weight_decay",
+          "original_defined": true,
+          "original_value": 0,
+          "released_value": 0,
+          "paper_value": 0,
+          "paper_source": "Table 7, PDF p19"
+        },
+        {
+          "field": "train.scheduler.factor",
+          "original_defined": true,
+          "original_value": 0.6,
+          "released_value": 0.6,
+          "paper_value": 0.6,
+          "paper_source": "Table 7, PDF p19"
+        },
+        {
+          "field": "train.scheduler.max_iters",
+          "original_defined": true,
+          "original_value": 20000,
+          "released_value": 20000
+        },
+        {
+          "field": "train.scheduler.min_lr",
+          "original_defined": true,
+          "original_value": 1e-06,
+          "released_value": 1e-06,
+          "paper_value": 1e-06,
+          "paper_source": "Table 7, PDF p19"
+        },
+        {
+          "field": "train.scheduler.patience",
+          "original_defined": true,
+          "original_value": 10,
+          "released_value": 10,
+          "paper_value": 10,
+          "paper_source": "Table 7, PDF p19"
+        },
+        {
+          "field": "train.scheduler.type",
+          "original_defined": true,
+          "original_value": "plateau",
+          "released_value": "plateau",
+          "paper_value": "plateau",
+          "paper_source": "Table 7, PDF p19"
+        },
+        {
+          "field": "train.ckpt_path",
+          "original_defined": true,
+          "original_value": "./ckpt-zinc-split-Unimol",
+          "released_value": "outputs/checkpoints",
+          "decision": "Relocated path; mathematical and optimizer settings unchanged."
+        },
+        {
+          "field": "train.ckpt_freq",
+          "original_defined": true,
+          "original_value": 1,
+          "released_value": 1
+        },
+        {
+          "field": "train.ema_decay",
+          "original_defined": true,
+          "original_value": 0.999,
+          "released_value": 0.999
+        },
+        {
+          "field": "train.max_grad_norm",
+          "original_defined": true,
+          "original_value": "Q",
+          "released_value": "Q"
+        },
+        {
+          "field": "train.val_freq",
+          "original_defined": true,
+          "original_value": 0.25,
+          "released_value": 0.25
+        },
+        {
+          "field": "train.mask_token_prob",
+          "original_defined": true,
+          "original_value": 0.0,
+          "released_value": 0.0
+        },
+        {
+          "field": "train.mask_pos_prob",
+          "original_defined": true,
+          "original_value": 0.0,
+          "released_value": 0.0
+        },
+        {
+          "field": "train.noise",
+          "original_defined": true,
+          "original_value": 1.0,
+          "released_value": 1.0
+        },
+        {
+          "field": "train.noise_type",
+          "original_defined": true,
+          "original_value": "uniform",
+          "released_value": "uniform"
+        },
+        {
+          "field": "train.masked_token_loss_weight",
+          "original_defined": true,
+          "original_value": 0.0,
+          "released_value": 0.0
+        },
+        {
+          "field": "train.masked_coord_loss_weight",
+          "original_defined": true,
+          "original_value": 0.0,
+          "released_value": 0.0
+        },
+        {
+          "field": "train.zh_noise.enabled",
+          "original_defined": true,
+          "original_value": true,
+          "released_value": true,
+          "paper_value": true,
+          "paper_source": "Table 7, PDF p19"
+        },
+        {
+          "field": "train.zh_noise.tau",
+          "original_defined": true,
+          "original_value": 0.1,
+          "released_value": 0.1,
+          "paper_value": 0.1,
+          "paper_source": "Table 7, PDF p19"
+        },
+        {
+          "field": "train.debug",
+          "original_defined": true,
+          "original_value": false,
+          "released_value": false
+        },
+        {
+          "field": "train.accumulate_grad_batches",
+          "original_defined": true,
+          "original_value": 2,
+          "released_value": 2,
+          "paper_value": 2,
+          "paper_source": "Table 7, PDF p19"
+        },
+        {
+          "field": "data.path",
+          "original_defined": true,
+          "original_value": "data/zinc9m_multiconf/ZINC_9M_10confs.lmdb",
+          "released_value": "data/ZINC_9M_10confs.lmdb",
+          "decision": "Relocated path; mathematical and optimizer settings unchanged."
+        },
+        {
+          "field": "data.indices_path",
+          "original_defined": true,
+          "original_value": "data/zinc9m_multiconf",
+          "released_value": "data/original-splits",
+          "decision": "Relocated path; mathematical and optimizer settings unchanged."
+        },
+        {
+          "field": "data.require_H",
+          "original_defined": true,
+          "original_value": false,
+          "released_value": false,
+          "paper_value": false,
+          "paper_source": "Table 7, PDF p19"
+        },
+        {
+          "field": "evaluation.batch_size",
+          "original_defined": true,
+          "original_value": 50,
+          "released_value": 50
+        },
+        {
+          "field": "evaluation.num_samples",
+          "original_defined": true,
+          "original_value": 4,
+          "released_value": 4
+        },
+        {
+          "field": "evaluation.sample_steps",
+          "original_defined": true,
+          "original_value": 100,
+          "released_value": 100,
+          "paper_value": 100,
+          "paper_source": "Table 7, PDF p19"
+        },
+        {
+          "field": "evaluation.sample_num_atoms",
+          "original_defined": true,
+          "original_value": "ref",
+          "released_value": "ref"
+        },
+        {
+          "field": "evaluation.num_workers",
+          "original_defined": true,
+          "original_value": 0,
+          "released_value": 0
+        },
+        {
+          "field": "evaluation.save_dir",
+          "original_defined": true,
+          "original_value": "./result-zinc-split-Unimol",
+          "released_value": "outputs/validation",
+          "decision": "Relocated path; mathematical and optimizer settings unchanged."
+        },
+        {
+          "field": "unimol.enabled",
+          "original_defined": true,
+          "original_value": true,
+          "released_value": true
+        },
+        {
+          "field": "unimol.model",
+          "original_defined": true,
+          "original_value": "unimol",
+          "released_value": "unimol"
+        },
+        {
+          "field": "unimol.ckpt_path",
+          "original_defined": true,
+          "original_value": "UNIMOL_CKPT/mol_pre_no_h_220816.pt",
+          "released_value": "UNIMOL_CKPT/mol_pre_no_h_220816.pt"
+        },
+        {
+          "field": "unimol.freeze",
+          "original_defined": true,
+          "original_value": true,
+          "released_value": true
+        },
+        {
+          "field": "unimol.project_to_latent",
+          "original_defined": true,
+          "original_value": false,
+          "released_value": false
+        },
+        {
+          "field": "unimol.use_outnorm",
+          "original_defined": true,
+          "original_value": true,
+          "released_value": true
+        },
+        {
+          "field": "unimol.outnorm_method",
+          "original_defined": true,
+          "original_value": "scalar",
+          "released_value": "scalar"
+        }
+      ],
+      "unresolved_paper_differences": [
+        {
+          "field": "feature_regularizer_reduction",
+          "original": "0.5 sum(Zh^2)/(B*Dz)",
+          "paper": "Eq.35: 0.5 sum(Zh^2)/(B*Nz*Dz)",
+          "decision": "Preserve original objective for the released checkpoint; numeric paper profile does not silently replace loss algebra."
+        },
+        {
+          "field": "data.split_counts",
+          "original": {
+            "train": 9318809,
+            "val": 931,
+            "test": 95
+          },
+          "paper": {
+            "train": 6921421,
+            "val": 996
+          },
+          "decision": "Use hash-identified recovered indices; paper split provenance remains unresolved."
+        },
+        {
+          "field": "unimol_scalar_normalization",
+          "original": "statistics depend on the current encoding batch",
+          "paper": "No fully specified batch convention",
+          "decision": "Retain original implementation; record encoding batch for benchmark comparisons."
+        }
+      ]
+    },
+    "molflae": {
+      "source_commit": "a47090b56f7f8db07b6d002640891807f8c96512",
+      "source_config": "v1/config.yaml",
+      "original_config_sha256": "1174c8e1b45b0b2fb64b1969053c429432b5fa9dbe806d6da4c65dd340b71fda",
+      "checkpoint_evidence": {
+        "epoch": 24,
+        "global_step": 145672,
+        "optimizer_groups": [
+          {
+            "lr": 0.0005,
+            "betas": [
+              0.95,
+              0.999
+            ],
+            "eps": 1e-08,
+            "weight_decay": 0,
+            "amsgrad": false,
+            "maximize": false,
+            "foreach": null,
+            "capturable": false,
+            "differentiable": false,
+            "fused": null
+          }
+        ],
+        "scheduler": [
+          {
+            "factor": 0.6,
+            "min_lrs": [
+              1e-06
+            ],
+            "patience": 10,
+            "last_epoch": 24,
+            "_last_lr": [
+              0.0005
+            ]
+          }
+        ]
+      },
+      "profiles": {
+        "checkpoint": {},
+        "original": {
+          "train.max_epochs": 40
+        },
+        "paper": {
+          "train.optimizer.lr": 0.005,
+          "train.optimizer.beta2": 0.99
+        }
+      },
+      "fields": [
+        {
+          "field": "encoder_config.num_blocks",
+          "original_defined": true,
+          "original_value": 1,
+          "released_value": 1
+        },
+        {
+          "field": "encoder_config.num_layers",
+          "original_defined": true,
+          "original_value": 9,
+          "released_value": 9,
+          "paper_value": 9,
+          "paper_source": "Table 9 and 10, PDF p22"
+        },
+        {
+          "field": "encoder_config.hidden_dim",
+          "original_defined": true,
+          "original_value": 128,
+          "released_value": 128,
+          "paper_value": 128,
+          "paper_source": "Table 9 and 10, PDF p22"
+        },
+        {
+          "field": "encoder_config.n_heads",
+          "original_defined": true,
+          "original_value": 16,
+          "released_value": 16,
+          "paper_value": 16,
+          "paper_source": "Table 9 and 10, PDF p22"
+        },
+        {
+          "field": "encoder_config.knn",
+          "original_defined": true,
+          "original_value": 32,
+          "released_value": 32,
+          "paper_value": 32,
+          "paper_source": "Table 9 and 10, PDF p22"
+        },
+        {
+          "field": "encoder_config.num_r_gaussian",
+          "original_defined": true,
+          "original_value": 20,
+          "released_value": 20
+        },
+        {
+          "field": "encoder_config.edge_feat_dim",
+          "original_defined": true,
+          "original_value": 4,
+          "released_value": 4
+        },
+        {
+          "field": "encoder_config.num_node_types",
+          "original_defined": true,
+          "original_value": 8,
+          "released_value": 8
+        },
+        {
+          "field": "encoder_config.act_fn",
+          "original_defined": true,
+          "original_value": "relu",
+          "released_value": "relu",
+          "paper_value": "relu",
+          "paper_source": "Table 9 and 10, PDF p22"
+        },
+        {
+          "field": "encoder_config.norm",
+          "original_defined": true,
+          "original_value": true,
+          "released_value": true
+        },
+        {
+          "field": "encoder_config.cutoff_mode",
+          "original_defined": true,
+          "original_value": "global",
+          "released_value": "global"
+        },
+        {
+          "field": "encoder_config.ew_net_type",
+          "original_defined": true,
+          "original_value": "r",
+          "released_value": "r"
+        },
+        {
+          "field": "encoder_config.num_init_x2h",
+          "original_defined": true,
+          "original_value": 1,
+          "released_value": 1
+        },
+        {
+          "field": "encoder_config.num_init_h2x",
+          "original_defined": true,
+          "original_value": 1,
+          "released_value": 1
+        },
+        {
+          "field": "encoder_config.num_x2h",
+          "original_defined": true,
+          "original_value": 1,
+          "released_value": 1
+        },
+        {
+          "field": "encoder_config.num_h2x",
+          "original_defined": true,
+          "original_value": 1,
+          "released_value": 1
+        },
+        {
+          "field": "encoder_config.r_max",
+          "original_defined": true,
+          "original_value": 10.0,
+          "released_value": 10.0
+        },
+        {
+          "field": "encoder_config.x2h_out_fc",
+          "original_defined": true,
+          "original_value": false,
+          "released_value": false
+        },
+        {
+          "field": "encoder_config.sync_twoup",
+          "original_defined": true,
+          "original_value": false,
+          "released_value": false
+        },
+        {
+          "field": "encoder_config.global_node_num",
+          "original_defined": true,
+          "original_value": 10,
+          "released_value": 10,
+          "paper_value": 10,
+          "paper_source": "Table 9 and 10, PDF p22"
+        },
+        {
+          "field": "encoder_config.ligand_v_dim",
+          "original_defined": true,
+          "original_value": 9,
+          "released_value": 9
+        },
+        {
+          "field": "optimal_layer_config.latent_dim",
+          "original_defined": true,
+          "original_value": 32,
+          "released_value": 32,
+          "paper_value": 32,
+          "paper_source": "Table 9 and 10, PDF p22"
+        },
+        {
+          "field": "decoder_config.beta1",
+          "original_defined": true,
+          "original_value": 1.5,
+          "released_value": 1.5
+        },
+        {
+          "field": "decoder_config.center_pos_mode",
+          "original_defined": true,
+          "original_value": true,
+          "released_value": true
+        },
+        {
+          "field": "decoder_config.destination_prediction",
+          "original_defined": true,
+          "original_value": true,
+          "released_value": true
+        },
+        {
+          "field": "decoder_config.discrete_steps",
+          "original_defined": true,
+          "original_value": 1000,
+          "released_value": 1000
+        },
+        {
+          "field": "decoder_config.ligand_atom_feature_dim",
+          "original_defined": true,
+          "original_value": 9,
+          "released_value": 9
+        },
+        {
+          "field": "decoder_config.net_config.act_fn",
+          "original_defined": true,
+          "original_value": "relu",
+          "released_value": "relu"
+        },
+        {
+          "field": "decoder_config.net_config.cutoff_mode",
+          "original_defined": true,
+          "original_value": "~global",
+          "released_value": "~global"
+        },
+        {
+          "field": "decoder_config.net_config.edge_feat_dim",
+          "original_defined": true,
+          "original_value": 4,
+          "released_value": 4
+        },
+        {
+          "field": "decoder_config.net_config.ew_net_type",
+          "original_defined": true,
+          "original_value": "global",
+          "released_value": "global"
+        },
+        {
+          "field": "decoder_config.net_config.hidden_dim",
+          "original_defined": true,
+          "original_value": 128,
+          "released_value": 128
+        },
+        {
+          "field": "decoder_config.net_config.knn",
+          "original_defined": true,
+          "original_value": 32,
+          "released_value": 32
+        },
+        {
+          "field": "decoder_config.net_config.n_heads",
+          "original_defined": true,
+          "original_value": 16,
+          "released_value": 16
+        },
+        {
+          "field": "decoder_config.net_config.name",
+          "original_defined": true,
+          "original_value": "unio2net",
+          "released_value": "unio2net"
+        },
+        {
+          "field": "decoder_config.net_config.norm",
+          "original_defined": true,
+          "original_value": true,
+          "released_value": true
+        },
+        {
+          "field": "decoder_config.net_config.num_blocks",
+          "original_defined": true,
+          "original_value": 1,
+          "released_value": 1
+        },
+        {
+          "field": "decoder_config.net_config.num_h2x",
+          "original_defined": true,
+          "original_value": 1,
+          "released_value": 1
+        },
+        {
+          "field": "decoder_config.net_config.num_layers",
+          "original_defined": true,
+          "original_value": 9,
+          "released_value": 9
+        },
+        {
+          "field": "decoder_config.net_config.num_node_types",
+          "original_defined": true,
+          "original_value": 8,
+          "released_value": 8
+        },
+        {
+          "field": "decoder_config.net_config.num_r_gaussian",
+          "original_defined": true,
+          "original_value": 20,
+          "released_value": 20
+        },
+        {
+          "field": "decoder_config.net_config.num_x2h",
+          "original_defined": true,
+          "original_value": 1,
+          "released_value": 1
+        },
+        {
+          "field": "decoder_config.net_config.r_max",
+          "original_defined": true,
+          "original_value": 10.0,
+          "released_value": 10.0
+        },
+        {
+          "field": "decoder_config.net_config.sync_twoup",
+          "original_defined": true,
+          "original_value": false,
+          "released_value": false
+        },
+        {
+          "field": "decoder_config.net_config.x2h_out_fc",
+          "original_defined": true,
+          "original_value": false,
+          "released_value": false
+        },
+        {
+          "field": "decoder_config.node_indicator",
+          "original_defined": true,
+          "original_value": true,
+          "released_value": true
+        },
+        {
+          "field": "decoder_config.pos_init_mode",
+          "original_defined": true,
+          "original_value": "zero",
+          "released_value": "zero"
+        },
+        {
+          "field": "decoder_config.protein_atom_feature_dim",
+          "original_defined": true,
+          "original_value": 32,
+          "released_value": 32,
+          "paper_value": 32,
+          "paper_source": "Table 9 and 10, PDF p22"
+        },
+        {
+          "field": "decoder_config.sampling_strategy",
+          "original_defined": true,
+          "original_value": "end_back_pmf",
+          "released_value": "end_back_pmf"
+        },
+        {
+          "field": "decoder_config.sigma1_coord",
+          "original_defined": true,
+          "original_value": 0.03,
+          "released_value": 0.03
+        },
+        {
+          "field": "decoder_config.t_min",
+          "original_defined": true,
+          "original_value": 0.0001,
+          "released_value": 0.0001
+        },
+        {
+          "field": "decoder_config.time_emb_dim",
+          "original_defined": true,
+          "original_value": 1,
+          "released_value": 1
+        },
+        {
+          "field": "decoder_config.time_emb_mode",
+          "original_defined": true,
+          "original_value": "simple",
+          "released_value": "simple"
+        },
+        {
+          "field": "decoder_config.use_discrete_t",
+          "original_defined": true,
+          "original_value": true,
+          "released_value": true
+        },
+        {
+          "field": "train.max_epochs",
+          "original_defined": true,
+          "original_value": 40,
+          "released_value": 25,
+          "paper_value": 25,
+          "paper_source": "Table 9 and 10, PDF p22",
+          "decision": "Paper epoch budget matches zero-based released checkpoint epoch + 1; original launcher upper limit is preserved by the original preset."
+        },
+        {
+          "field": "train.batch_size",
+          "original_defined": true,
+          "original_value": 200,
+          "released_value": 200,
+          "paper_value": 200,
+          "paper_source": "Table 9 and 10, PDF p22"
+        },
+        {
+          "field": "train.num_workers",
+          "original_defined": true,
+          "original_value": 48,
+          "released_value": 48
+        },
+        {
+          "field": "train.gpus",
+          "original_defined": true,
+          "original_value": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "released_value": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        },
+        {
+          "field": "train.recon_loss.recon_loss_weight",
+          "original_defined": true,
+          "original_value": 1,
+          "released_value": 1,
+          "paper_value": 1,
+          "paper_source": "Table 9 and 10, PDF p22"
+        },
+        {
+          "field": "train.recon_loss.d_loss_weight",
+          "original_defined": true,
+          "original_value": 1,
+          "released_value": 1
+        },
+        {
+          "field": "train.recon_loss.c_loss_weight",
+          "original_defined": true,
+          "original_value": 1,
+          "released_value": 1
+        },
+        {
+          "field": "train.kl_loss.kl_loss_weight",
+          "original_defined": true,
+          "original_value": 0.1,
+          "released_value": 0.1,
+          "paper_value": 0.1,
+          "paper_source": "Table 9 and 10, PDF p22"
+        },
+        {
+          "field": "train.kl_loss.Zh_kl_loss_weight",
+          "original_defined": true,
+          "original_value": 0.3,
+          "released_value": 0.3
+        },
+        {
+          "field": "train.kl_loss.Zx_kl_loss_weight",
+          "original_defined": true,
+          "original_value": 0.5,
+          "released_value": 0.5
+        },
+        {
+          "field": "train.kl_loss.sigma2",
+          "original_defined": true,
+          "original_value": 10,
+          "released_value": 10,
+          "paper_value": 10,
+          "paper_source": "Table 9 and 10, PDF p22"
+        },
+        {
+          "field": "train.optimizer.beta1",
+          "original_defined": true,
+          "original_value": 0.95,
+          "released_value": 0.95,
+          "paper_value": 0.95,
+          "paper_source": "Table 9 and 10, PDF p22"
+        },
+        {
+          "field": "train.optimizer.beta2",
+          "original_defined": true,
+          "original_value": 0.999,
+          "released_value": 0.999,
+          "paper_value": 0.99,
+          "paper_source": "Table 9 and 10, PDF p22",
+          "decision": "Original source and optimizer state in checkpoint agree; preserve them by default. Paper numeric preset records the conflicting table value."
+        },
+        {
+          "field": "train.optimizer.lr",
+          "original_defined": true,
+          "original_value": 0.0005,
+          "released_value": 0.0005,
+          "paper_value": 0.005,
+          "paper_source": "Table 9 and 10, PDF p22",
+          "decision": "Original source and optimizer state in checkpoint agree; preserve them by default. Paper numeric preset records the conflicting table value."
+        },
+        {
+          "field": "train.optimizer.type",
+          "original_defined": true,
+          "original_value": "adam",
+          "released_value": "adam",
+          "paper_value": "adam",
+          "paper_source": "Table 9 and 10, PDF p22"
+        },
+        {
+          "field": "train.optimizer.weight_decay",
+          "original_defined": true,
+          "original_value": 0,
+          "released_value": 0,
+          "paper_value": 0,
+          "paper_source": "Table 9 and 10, PDF p22"
+        },
+        {
+          "field": "train.scheduler.factor",
+          "original_defined": true,
+          "original_value": 0.6,
+          "released_value": 0.6,
+          "paper_value": 0.6,
+          "paper_source": "Table 9 and 10, PDF p22"
+        },
+        {
+          "field": "train.scheduler.max_iters",
+          "original_defined": true,
+          "original_value": 20000,
+          "released_value": 20000
+        },
+        {
+          "field": "train.scheduler.min_lr",
+          "original_defined": true,
+          "original_value": 1e-06,
+          "released_value": 1e-06,
+          "paper_value": 1e-06,
+          "paper_source": "Table 9 and 10, PDF p22"
+        },
+        {
+          "field": "train.scheduler.patience",
+          "original_defined": true,
+          "original_value": 10,
+          "released_value": 10,
+          "paper_value": 10,
+          "paper_source": "Table 9 and 10, PDF p22"
+        },
+        {
+          "field": "train.scheduler.type",
+          "original_defined": true,
+          "original_value": "plateau",
+          "released_value": "plateau",
+          "paper_value": "plateau",
+          "paper_source": "Table 9 and 10, PDF p22"
+        },
+        {
+          "field": "train.ckpt_path",
+          "original_defined": true,
+          "original_value": "./data",
+          "released_value": "outputs/checkpoints",
+          "decision": "Relocated path; mathematical and optimizer settings unchanged."
+        },
+        {
+          "field": "train.ckpt_freq",
+          "original_defined": true,
+          "original_value": 1,
+          "released_value": 1
+        },
+        {
+          "field": "train.ema_decay",
+          "original_defined": true,
+          "original_value": 0.999,
+          "released_value": 0.999
+        },
+        {
+          "field": "train.max_grad_norm",
+          "original_defined": true,
+          "original_value": "Q",
+          "released_value": "Q"
+        },
+        {
+          "field": "train.val_freq",
+          "original_defined": true,
+          "original_value": 0.25,
+          "released_value": 0.25
+        },
+        {
+          "field": "data.path",
+          "original_defined": true,
+          "original_value": "./data",
+          "released_value": "data/ZINC_9M_10confs.lmdb",
+          "decision": "Relocated path; mathematical and optimizer settings unchanged."
+        },
+        {
+          "field": "data.indices_path",
+          "original_defined": true,
+          "original_value": "./data",
+          "released_value": "data/original-splits",
+          "decision": "Relocated path; mathematical and optimizer settings unchanged."
+        },
+        {
+          "field": "data.require_H",
+          "original_defined": false,
+          "original_value": null,
+          "released_value": false,
+          "paper_value": false,
+          "paper_source": "Table 9 and 10, PDF p22",
+          "decision": "Explicit ZINC implicit-hydrogen preprocessing from the paper and original checkpoint architecture."
+        },
+        {
+          "field": "evaluation.batch_size",
+          "original_defined": true,
+          "original_value": 200,
+          "released_value": 200
+        },
+        {
+          "field": "evaluation.num_samples",
+          "original_defined": true,
+          "original_value": 4,
+          "released_value": 4
+        },
+        {
+          "field": "evaluation.sample_steps",
+          "original_defined": true,
+          "original_value": 100,
+          "released_value": 100,
+          "paper_value": 100,
+          "paper_source": "Table 9 and 10, PDF p22"
+        },
+        {
+          "field": "evaluation.sample_num_atoms",
+          "original_defined": true,
+          "original_value": "ref",
+          "released_value": "ref"
+        },
+        {
+          "field": "evaluation.num_workers",
+          "original_defined": true,
+          "original_value": 48,
+          "released_value": 48
+        },
+        {
+          "field": "evaluation.save_dir",
+          "original_defined": true,
+          "original_value": "./sample_ZINC",
+          "released_value": "outputs/validation",
+          "decision": "Relocated path; mathematical and optimizer settings unchanged."
+        }
+      ],
+      "unresolved_paper_differences": [
+        {
+          "field": "train.optimizer.lr",
+          "original": 0.0005,
+          "checkpoint": 0.0005,
+          "paper": 0.005,
+          "decision": "Default follows original and checkpoint; paper numeric preset selects .005 explicitly."
+        },
+        {
+          "field": "train.optimizer.beta2",
+          "original": 0.999,
+          "checkpoint": 0.999,
+          "paper": 0.99,
+          "decision": "Default follows original and checkpoint; paper numeric preset selects .99 explicitly."
+        },
+        {
+          "field": "regularization_reduction",
+          "original": ".1*(.3*Lh+.5*Lx), dimension-normalized",
+          "paper": ".1*(Lh+Lx); full reduction convention not specified",
+          "decision": "Retain original objective; do not claim equation-level equivalence."
+        },
+        {
+          "field": "data.split_counts",
+          "original": {
+            "train": 9318809,
+            "val": 931,
+            "test": 95
+          },
+          "paper": {
+            "train": 9322660,
+            "val": 932
+          },
+          "decision": "Recovered index hashes are preserved; matching original MolFLAE training split is not certified."
+        }
+      ]
+    }
+  },
+  "author_resolutions": {
+    "date": "2026-10-17",
+    "molflae_optimizer": "Use original repository/checkpoint lr=.0005, beta2=.999 for the approved default.",
+    "molalign3d_feature_regularizer": "Use the original reduction without the additional paper 1/Nz factor."
+  }
+}

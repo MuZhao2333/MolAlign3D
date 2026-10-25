@@ -1,0 +1,15 @@
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+outputs/
+logs/
+.pytest_cache/
+.ruff_cache/
+weights/*
+data/original-splits/
+*.ckpt
+*.pt
+*.lmdb

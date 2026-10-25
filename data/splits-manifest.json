@@ -1,0 +1,24 @@
+{
+  "dataset": "ZINC_9M_10confs.lmdb",
+  "record_order": "LMDB cursor lexicographic byte-key ordering; must match the original dataset",
+  "total_indexed_records": 9319835,
+  "splits": {
+    "train": {
+      "count": 9318809,
+      "sha256": "d2d7ffbeada972ad366efc13181c9c6e3c5682d816e28ce0ba318709a292fd90"
+    },
+    "val": {
+      "count": 931,
+      "sha256": "c73916746b3c50d1b3b198ca8d159d3564a893dc6d9c3f2c7d1fdbfd293fb179"
+    },
+    "test": {
+      "count": 95,
+      "sha256": "ad789a38db65b8612aec736a6dea07d785950996d8fdfc1e90ba1630a1682b68"
+    }
+  },
+  "notes": [
+    "Index files recovered from the original repository data directory.",
+    "The MolFLAE checkpoint has no embedded training dataset metadata; identical original training splits cannot be independently certified.",
+    "These counts and hashes identify the archived split files; they are not paper performance metrics."
+  ]
+}
